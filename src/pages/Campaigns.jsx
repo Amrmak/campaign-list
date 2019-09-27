@@ -11,7 +11,7 @@ import {
   Text,
 } from 'grommet';
 
-import { filterValidCampaign } from '../utils';
+import { applyCampaignsFilter, filterValidCampaign } from '../utils';
 
 import SearchInput from '../components/SearchInput';
 import DateRange from '../components/DateRange';
@@ -19,7 +19,7 @@ import CampaignRow from '../components/CampaignRow';
 
 const Campaigns = () => {
   const [state, dispatch] = useContext(Store);
-  const { campaigns } = state;
+  const { campaigns, filters } = state;
 
   useEffect(() => {
     document.title = 'Campaigns';
@@ -40,6 +40,15 @@ const Campaigns = () => {
     });
   };
 
+  let filteredCampaign = campaigns.length
+    ? applyCampaignsFilter(
+        filters.name,
+        filters.startDate,
+        filters.endDate,
+        campaigns,
+      )
+    : [];
+
   return (
     <Box flex align="center" justify="center" pad="small" basis="small">
       <Box direction="row" width="large" justify="between" margin="medium">
@@ -57,8 +66,8 @@ const Campaigns = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {campaigns.length ? (
-            campaigns.map(campaign => (
+          {filteredCampaign.length ? (
+            filteredCampaign.map(campaign => (
               <CampaignRow key={campaign.id} {...campaign} />
             ))
           ) : (

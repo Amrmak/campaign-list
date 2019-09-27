@@ -2,7 +2,11 @@ import React, { useState } from 'react';
 import { Box, Text, Calendar, DropButton } from 'grommet';
 import { Schedule } from 'grommet-icons';
 
-const DropContent = ({ bounds = ['1970-01-01', '2200-12-31'], onClose }) => {
+const DropContent = ({
+  boundStart = '1900-01-01',
+  boundEnd = '2200-01-01',
+  onClose,
+}) => {
   const [date, setDate] = useState();
 
   const handleSelect = date => {
@@ -16,19 +20,20 @@ const DropContent = ({ bounds = ['1970-01-01', '2200-12-31'], onClose }) => {
         date={date}
         onSelect={handleSelect}
         showAdjacentDays={false}
-        bounds={bounds}
+        bounds={[boundStart, boundEnd]}
       />
     </Box>
   );
 };
 
-const DatePicker = ({ bounds }) => {
+const DatePicker = ({ boundStart, boundEnd, onChange }) => {
   const [date, setDate] = useState();
   const [open, setOpen] = useState();
 
   const onClose = nextDate => {
     setDate(nextDate);
     setOpen(false);
+    onChange(nextDate);
     setTimeout(() => setOpen(undefined), 1);
   };
 
@@ -37,7 +42,13 @@ const DatePicker = ({ bounds }) => {
       open={open}
       onClose={() => setOpen(false)}
       onOpen={() => setOpen(true)}
-      dropContent={<DropContent bounds={bounds} onClose={onClose} />}
+      dropContent={
+        <DropContent
+          boundStart={boundStart}
+          boundEnd={boundEnd}
+          onClose={onClose}
+        />
+      }
     >
       <Box direction="row" gap="small" align="center" pad="small">
         <Text color={date ? undefined : 'dark-5'}>

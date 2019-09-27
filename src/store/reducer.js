@@ -12,6 +12,33 @@ const reducer = (state, action) => {
         ]),
       };
     }
+    case actionTypes.SET_SEARCH_FILTER: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          name: action.payload,
+        },
+      };
+    }
+    case actionTypes.SET_START_DATE: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          startDate: action.payload,
+        },
+      };
+    }
+    case actionTypes.SET_END_DATE: {
+      return {
+        ...state,
+        filters: {
+          ...state.filters,
+          endDate: action.payload,
+        },
+      };
+    }
     default: {
       return state;
     }

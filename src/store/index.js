@@ -3,6 +3,11 @@ import reducer from './reducer';
 
 const initialState = {
   campaigns: [],
+  filters: {
+    name: '',
+    startDate: '',
+    endDate: '',
+  },
 };
 
 export const Store = React.createContext();

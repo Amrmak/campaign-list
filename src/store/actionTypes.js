@@ -1,1 +1,4 @@
 export const ADD_CAMPAIGNS = 'ADD_CAMPAIGNS';
+export const SET_SEARCH_FILTER = 'SET_SEARCH_FILTER';
+export const SET_START_DATE = 'SET_START_DATE';
+export const SET_END_DATE = 'SET_END_DATE';
