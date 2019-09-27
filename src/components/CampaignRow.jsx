@@ -18,7 +18,7 @@ const CampaignRow = ({ name, startDate, endDate, status, budget }) => (
       <Text>{status}</Text>
     </TableCell>
     <TableCell>
-      <Text>${budget}</Text>
+      <Text>{budget}</Text>
     </TableCell>
   </TableRow>
 );

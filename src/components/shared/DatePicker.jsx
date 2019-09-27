@@ -43,7 +43,7 @@ const DatePicker = ({ bounds }) => {
         <Text color={date ? undefined : 'dark-5'}>
           {date
             ? `${new Date(date).toLocaleDateString('en-GB')}`
-            : 'Select date & time'}
+            : 'Select date'}
         </Text>
         <Schedule />
       </Box>

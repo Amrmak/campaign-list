@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Grommet } from 'grommet';
 import App from './App';
+import { Provider } from './store';
 // import * as serviceWorker from './serviceWorker';
 
 const theme = {
@@ -36,9 +37,11 @@ const theme = {
 };
 
 const Root = () => (
-  <Grommet theme={theme} full>
-    <App />
-  </Grommet>
+  <Provider>
+    <Grommet theme={theme} full>
+      <App />
+    </Grommet>
+  </Provider>
 );
 
 ReactDOM.render(<Root />, document.getElementById('root'));

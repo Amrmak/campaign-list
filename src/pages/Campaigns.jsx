@@ -1,4 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useContext } from 'react';
+import * as actionTypes from '../store/actionTypes.js';
+import { Store } from '../store';
 import {
   Box,
   Table,
@@ -14,27 +16,25 @@ import DateRange from '../components/DateRange';
 import CampaignRow from '../components/CampaignRow';
 
 const Campaigns = () => {
+  const [state, dispatch] = useContext(Store);
+  const { campaigns } = state;
+
   useEffect(() => {
     document.title = 'Campaigns';
   }, []);
 
-  const tableHeaders = ['Name', 'Start Date', 'End Date', 'Status', 'Budget'];
-  const data = [
-    {
-      id: 1,
-      name: 'Divavu',
-      startDate: '9/19/2017',
-      endDate: '3/9/2018',
-      budget: 88377,
-    },
-    {
-      id: 2,
-      name: 'Jaxspan',
-      startDate: '11/21/2017',
-      endDate: '2/21/2018',
-      budget: 608715,
-    },
+  const tableHeaders = [
+    'Name',
+    'Start Date',
+    'End Date',
+    'Status',
+    'Budget (USD)',
   ];
+
+  window.AddCampaigns = array => {
+    // TODO: validate input array
+    dispatch({ type: actionTypes.ADD_CAMPAIGNS, payload: array });
+  };
 
   return (
     <Box flex align="center" justify="center" pad="small" basis="small">
@@ -53,8 +53,8 @@ const Campaigns = () => {
           </TableRow>
         </TableHeader>
         <TableBody>
-          {data.length ? (
-            data.map(campaign => (
+          {campaigns.length ? (
+            campaigns.map(campaign => (
               <CampaignRow key={campaign.id} {...campaign} />
             ))
           ) : (
