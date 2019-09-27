@@ -11,6 +11,8 @@ import {
   Text,
 } from 'grommet';
 
+import { filterValidCampaign } from '../utils';
+
 import SearchInput from '../components/SearchInput';
 import DateRange from '../components/DateRange';
 import CampaignRow from '../components/CampaignRow';
@@ -32,8 +34,10 @@ const Campaigns = () => {
   ];
 
   window.AddCampaigns = array => {
-    // TODO: validate input array
-    dispatch({ type: actionTypes.ADD_CAMPAIGNS, payload: array });
+    dispatch({
+      type: actionTypes.ADD_CAMPAIGNS,
+      payload: filterValidCampaign(array),
+    });
   };
 
   return (

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import { TableCell, TableRow, Text } from 'grommet';
 
-const CampaignRow = ({ name, startDate, endDate, status, budget }) => (
+const CampaignRow = ({ name, startDate, endDate, status, Budget }) => (
   <TableRow>
     <TableCell>
       <Text>{name}</Text>
@@ -18,7 +18,7 @@ const CampaignRow = ({ name, startDate, endDate, status, budget }) => (
       <Text>{status}</Text>
     </TableCell>
     <TableCell>
-      <Text>{budget}</Text>
+      <Text>{Budget}</Text>
     </TableCell>
   </TableRow>
 );
@@ -28,7 +28,7 @@ CampaignRow.propTypes = {
   startDate: PropTypes.string.isRequired,
   endDate: PropTypes.string.isRequired,
   status: PropTypes.string,
-  budget: PropTypes.number.isRequired,
+  Budget: PropTypes.number.isRequired,
 };
 
 export default CampaignRow;
