@@ -9,7 +9,7 @@
     "react": "^16.9.0",
     "react-dom": "^16.9.0",
     "react-router-dom": "^5.1.0",
-    "react-scripts": "3.1.2",
+    "react-scripts": "5.0.1",
     "styled-components": "^4.4.0"
   },
   "scripts": {
@@ -42,11 +42,11 @@
     }
   },
   "devDependencies": {
-    "@commitlint/cli": "^8.2.0",
+    "@commitlint/cli": "^20.1.0",
     "@commitlint/config-conventional": "^8.2.0",
     "git-cz": "^3.2.1",
-    "husky": "^3.0.5",
-    "lint-staged": "^9.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.6",
     "prettier": "^1.18.2"
   }
 }
